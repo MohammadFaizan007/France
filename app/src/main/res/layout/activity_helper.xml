@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.HelperActivity">
+
+<!--    <com.google.android.material.appbar.AppBarLayout-->
+<!--        android:id="@+id/appBarLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:theme="@style/AppTheme.AppBarOverlay"-->
+<!--        tools:ignore="MissingConstraints">-->
+
+<!--        <androidx.appcompat.widget.Toolbar-->
+<!--            android:id="@+id/main_toolbar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="56dp"-->
+<!--            android:background="@color/colorPrimary"-->
+<!--            android:contentInsetStart="0dp"-->
+<!--            android:contentInsetLeft="0dp"-->
+<!--            android:contentInsetEnd="0dp"-->
+<!--            android:contentInsetRight="0dp"-->
+<!--            app:contentInsetEnd="0dp"-->
+<!--            app:contentInsetLeft="0dp"-->
+<!--            app:contentInsetRight="0dp"-->
+<!--            app:contentInsetStart="0dp"-->
+<!--            app:popupTheme="@style/AppTheme.PopupOverlay">-->
+
+<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                android:id="@+id/consLayout1"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="4dp"-->
+<!--                android:layout_marginLeft="4dp">-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/title"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="28dp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="16sp"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    android:layout_marginLeft="28dp" />-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/notification_bell"-->
+<!--                    android:layout_width="100dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:layout_marginEnd="3dp"-->
+<!--                    android:scaleType="centerInside"-->
+<!--                    android:visibility="visible"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    app:srcCompat="@drawable/inferrixlogo"-->
+<!--                    android:layout_marginRight="3dp" />-->
+
+<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--        </androidx.appcompat.widget.Toolbar>-->
+
+<!--    </com.google.android.material.appbar.AppBarLayout>-->
+
+    <FrameLayout
+        android:id="@+id/main_frame_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.5"/>
+
+<!--    <TextView-->
+<!--        android:id="@+id/lebel"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height='50dp'-->
+<!--        android:background="@color/colorPrimary"-->
+<!--        android:padding="2dp"-->
+<!--        app:itemIconSize="20dp"-->
+<!--        app:labelVisibilityMode="labeled"-->
+<!--        android:text="@string/level_text"-->
+<!--        android:gravity="center"-->
+<!--        android:textColor="@color/white"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"/>-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

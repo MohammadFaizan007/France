@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+<!--    <include-->
+<!--        android:id="@+id/header"-->
+<!--        layout="@layout/custom_header"-->
+<!--        android:visibility="visible" />-->
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/damperUid"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/border_square"
+                android:padding="8dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text="Name"
+                app:layout_constraintEnd_toStartOf="@+id/deviceName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <EditText
+                android:id="@+id/deviceName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/border_square"
+                android:hint="Please Enter Name"
+                android:padding="8dp"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/damperUid"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/damperUid"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/site"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/border_square"
+                android:padding="8dp"
+                android:text="Site"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/et_site"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/damperUid" />
+
+            <EditText
+                android:id="@+id/et_site"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/border_square"
+                android:hint="Please Enter Site Name"
+                android:padding="8dp"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:inputType="text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/site"
+                app:layout_constraintTop_toBottomOf="@+id/damperUid" />
+
+
+            <TextView
+                android:id="@+id/air"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/border_square"
+                android:padding="9dp"
+                android:text="Building"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/et_building"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/site" />
+
+            <EditText
+                android:id="@+id/et_building"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/border_square"
+                android:ems="10"
+                android:hint="Please Building Name"
+                android:inputType="textPersonName"
+                android:padding="8dp"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/air"
+                app:layout_constraintTop_toBottomOf="@+id/site"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/flour"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/border_square"
+                android:padding="8dp"
+                android:text="Level"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/et_level"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/air" />
+
+            <EditText
+                android:id="@+id/et_level"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/border_square"
+                android:hint="Please Enter Level"
+                android:padding="8dp"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:inputType="text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/flour"
+                app:layout_constraintTop_toBottomOf="@+id/air" />
+
+            <TextView
+                android:id="@+id/damper"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/border_square"
+                android:padding="9dp"
+                android:text="Room"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/et_room"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/flour" />
+
+            <EditText
+                android:id="@+id/et_room"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/border_square"
+                android:hint="Please Enter Room"
+                android:padding="8dp"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/damper"
+                app:layout_constraintTop_toBottomOf="@+id/flour" />
+
+
+
+
+
+
+            <TextView
+                android:id="@+id/group"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/border_square"
+                android:padding="9dp"
+                android:text="Group"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/add_device_group_list"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/damper" />
+
+<!--            <EditText-->
+<!--                android:id="@+id/et_group"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="8dp"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:layout_marginEnd="5dp"-->
+<!--                android:background="@drawable/border_square"-->
+<!--                android:hint="Please Enter Group"-->
+<!--                android:padding="8dp"-->
+<!--                android:singleLine="true"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="16sp"-->
+            <Spinner
+                android:id="@+id/add_device_group_list"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/group"
+                app:layout_constraintTop_toBottomOf="@+id/damper" />
+
+
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="1dp"-->
+<!--                android:layout_marginTop="5dp"-->
+<!--                android:background="@color/white"-->
+<!--                />-->
+
+
+
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/rect_btn_bg_darkprimary"
+                android:text="Submit"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/group"
+                app:layout_constraintVertical_bias="0.0" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/ll_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="5dp"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="Everything you need is here"
+                android:textAllCaps="true"
+                android:textSize="@dimen/_14sdp" />
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_customerId"
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="@dimen/_150sdp"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
+                app:cardCornerRadius="@dimen/_5sdp">
+
+
+                <LinearLayout
+                    android:id="@+id/dashboard_home_setting_layout"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="@dimen/_120sdp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rect_btn_bg_darkprimary"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/theme_img"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:background="@drawable/curveborder"
+                        android:padding="@dimen/_5sdp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_home_setting" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:gravity="center"
+                        android:padding="@dimen/_5sdp"
+                        android:text="Home and Settings"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_12sdp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="50dp"
+                android:background="@drawable/rounded_gray_border"
+                android:paddingStart="20dp"
+                android:paddingEnd="10dp">
+
+                <Spinner
+                    android:id="@+id/dashboard_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/group_list_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_main">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="All Group"
+                android:textAllCaps="true"
+                android:textSize="@dimen/_12sdp" />
+
+            <ListView
+                android:id="@+id/dash_group_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:scrollbars="vertical"
+                android:background="@color/liam_color"
+                tools:listitem="@layout/group_list_adapter"></ListView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/individual_light_list_layout"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_main">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textSize="@dimen/medium_app_text_size"
+                android:textAllCaps="true"
+                android:layout_margin="5dp"
+                android:layout_gravity="center_horizontal"
+                android:text="Individual Light"
+                />
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/individual_light_list"
+                android:background="@color/liam_color"
+                tools:listitem="@layout/group_list_adapter"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="@dimen/_5sdp">
+            </ListView>
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:id="@+id/scrollView"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    app:layout_behavior="@string/appbar_scrolling_view_behavior">-->
+
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:orientation="vertical"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent">-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center_horizontal"-->
+<!--                android:layout_margin="5dp"-->
+<!--                android:ellipsize="end"-->
+<!--                android:singleLine="true"-->
+<!--                android:text="Everything you need is here"-->
+<!--                android:textAllCaps="true"-->
+<!--                android:textSize="@dimen/_14sdp" />-->
+
+
+<!--            <androidx.cardview.widget.CardView-->
+<!--                android:id="@+id/card_customerId"-->
+<!--                android:layout_width="@dimen/_200sdp"-->
+<!--                android:layout_height="@dimen/_150sdp"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginStart="16dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_marginEnd="16dp"-->
+<!--                app:cardCornerRadius="@dimen/_5sdp">-->
+
+
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/dashboard_home_setting_layout"-->
+<!--                    android:layout_width="@dimen/_150sdp"-->
+<!--                    android:layout_height="@dimen/_120sdp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:background="@drawable/rect_btn_bg_darkprimary"-->
+<!--                    android:orientation="vertical">-->
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/theme_img"-->
+<!--                        android:layout_width="80dp"-->
+<!--                        android:layout_height="80dp"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:layout_marginTop="@dimen/_20sdp"-->
+<!--                        android:background="@drawable/curveborder"-->
+<!--                        android:padding="@dimen/_5sdp"-->
+<!--                        android:scaleType="centerCrop"-->
+<!--                        android:src="@drawable/ic_home_setting" />-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="3dp"-->
+<!--                        android:gravity="center"-->
+<!--                        android:padding="@dimen/_5sdp"-->
+<!--                        android:text="Home and Settings"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        android:textSize="@dimen/_12sdp" />-->
+<!--                </LinearLayout>-->
+<!--            </androidx.cardview.widget.CardView>-->
+
+<!--            <RelativeLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:layout_marginStart="50dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_marginEnd="50dp"-->
+<!--                android:background="@drawable/rounded_gray_border"-->
+<!--                android:paddingStart="20dp"-->
+<!--                android:paddingEnd="10dp">-->
+
+<!--                <Spinner-->
+<!--                    android:id="@+id/dashboard_spinner"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent" />-->
+<!--            </RelativeLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/group_list_layout"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:gravity="center"-->
+<!--                android:orientation="vertical">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:ellipsize="end"-->
+<!--                    android:singleLine="true"-->
+<!--                    android:text="All Group"-->
+<!--                    android:textAllCaps="true"-->
+<!--                    android:textSize="@dimen/_12sdp" />-->
+
+
+<!--                <ListView-->
+<!--                    android:id="@+id/dash_group_list"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:layout_marginBottom="@dimen/_5sdp"-->
+<!--                    android:divider="@android:color/transparent">-->
+
+<!--                </ListView>-->
+<!--            </LinearLayout>-->
+
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/individual_light_list_layout"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:gravity="center"-->
+<!--                android:orientation="vertical"-->
+<!--                android:visibility="gone">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center_horizontal"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:ellipsize="end"-->
+<!--                    android:singleLine="true"-->
+<!--                    android:text="Individual Light"-->
+<!--                    android:textAllCaps="true"-->
+<!--                    android:textSize="@dimen/_12sdp" />-->
+
+<!--                <ListView-->
+<!--                    android:id="@+id/individual_light_list"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:divider="@android:color/transparent"-->
+<!--                    android:dividerHeight="5dp"></ListView>-->
+<!--            </LinearLayout>-->
+
+<!--        </LinearLayout>-->
+
+
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+<!--</androidx.core.widget.NestedScrollView>-->

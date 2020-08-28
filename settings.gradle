@@ -1,0 +1,2 @@
+include ':app', ':progress-library', ':niftyDialog', ':jellytogglebutton'
+rootProject.name='SmartLightSensor'

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/SmartLightSensor.iml" filepath="$PROJECT_DIR$/SmartLightSensor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jellytogglebutton/jellytogglebutton.iml" filepath="$PROJECT_DIR$/jellytogglebutton/jellytogglebutton.iml" />
+      <module fileurl="file://$PROJECT_DIR$/niftyDialog/niftyDialog.iml" filepath="$PROJECT_DIR$/niftyDialog/niftyDialog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/progress-library/progress-library.iml" filepath="$PROJECT_DIR$/progress-library/progress-library.iml" />
+    </modules>
+  </component>
+</project>

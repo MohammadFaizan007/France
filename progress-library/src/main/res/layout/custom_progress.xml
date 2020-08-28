@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_gravity="center"
+    android:background="@drawable/dialog_background"
+    android:layout_width="150dp"
+    android:layout_height="150dp"
+    android:theme="@style/ProgressTheme">
+<com.CustomProgress.ProgressIndicatorView
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    android:visibility="visible"
+    app:indicatorName="BallClipRotateMultipleIndicator"
+    app:indicatorColor="@color/white"
+    android:id="@+id/custom_dialog_progress"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+    <com.CustomProgress.CustomTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:ellipsize="end"
+        android:text="Loading"
+        android:textColor="@color/white"
+        android:id="@+id/dialog_content_textView"
+        />
+        <com.CustomProgress.ProgressIndicatorView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:visibility="visible"
+            android:layout_marginStart="5dp"
+            android:layout_gravity="bottom"
+            app:indicatorName="BallPulseIndicator"
+            app:indicatorColor="@color/white"
+            android:id="@+id/custom_dialog_second_progress"/>
+
+    </LinearLayout>
+</LinearLayout>

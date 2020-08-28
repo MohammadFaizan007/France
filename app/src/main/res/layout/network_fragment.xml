@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerInParent="true"
+    android:id="@+id/add_smart_blur"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:layout_gravity="center">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:gravity="center">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/rounded_gray_border"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:weightSum="1">
+
+            <TextView
+                android:id="@+id/project_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".7"
+                android:text="Project Name"
+                android:textColor="@color/btn_press_color"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold"
+                android:padding="@dimen/_8sdp" />
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".3"
+                    android:text="Date"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold"
+                    android:padding="@dimen/_8sdp"
+                    />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/spinner_layout"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/rounded_gray_border"
+                android:paddingStart="20dp"
+                android:paddingEnd="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp"
+               >
+
+                <Spinner
+                    android:id="@+id/dashboard_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/individual_light_list_layout"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/_10sdp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textSize="@dimen/medium_app_text_size"
+                    android:textAllCaps="true"
+                    android:layout_margin="5dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Individual Light"
+                    />
+                <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/individual_light_list"
+                    android:background="@color/liam_color"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="@dimen/_5sdp">
+                </ListView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/site_light_list_layout"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/_10sdp"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textSize="@dimen/medium_app_text_size"
+                    android:textAllCaps="true"
+                    android:layout_margin="5dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Site Light"
+                    />
+                <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/site_light_list"
+                    android:background="@color/liam_color"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="@dimen/_5sdp">
+                </ListView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/building_light_list_layout"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/_10sdp"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textSize="@dimen/medium_app_text_size"
+                    android:textAllCaps="true"
+                    android:layout_margin="5dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Building Light"
+                    />
+                <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/building_light_list"
+                    android:background="@color/liam_color"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="@dimen/_5sdp">
+                </ListView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/level_light_list_layout"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/_10sdp"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textSize="@dimen/medium_app_text_size"
+                    android:textAllCaps="true"
+                    android:layout_margin="5dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Level Light"
+                    />
+                <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/level_light_list"
+                    android:background="@color/liam_color"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="@dimen/_5sdp">
+                </ListView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/room_light_list_layout"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/_10sdp"
+            >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textSize="@dimen/medium_app_text_size"
+                    android:textAllCaps="true"
+                    android:layout_margin="5dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Room Light"
+                    />
+                <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/room_light_list"
+                    android:background="@color/liam_color"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="@dimen/_5sdp">
+                </ListView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/group_list_layout"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/_10sdp"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textSize="@dimen/medium_app_text_size"
+                    android:textAllCaps="true"
+                    android:layout_margin="5dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Group Light"
+                    />
+                <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/group_light_list"
+                    android:background="@color/liam_color"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="@dimen/_5sdp">
+                </ListView>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
