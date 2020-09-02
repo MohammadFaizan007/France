@@ -175,7 +175,7 @@ public class ScanDeviceFragment extends Fragment implements MyBeaconScanner, Adv
 
     @Override
     public void noBeaconFound() {
-        Log.w("AddDeviceFragment","No Beacon founded");
+        Log.w("AddDeviceFragment","No Beacon found");
         if(!AppHelper.IS_TESTING)
             scanDeviceAdapter.clearList();
 

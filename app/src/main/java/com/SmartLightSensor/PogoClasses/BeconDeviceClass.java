@@ -8,6 +8,7 @@ public class BeconDeviceClass {
     String deviceLevel="";
     String deviceRoom="";
     String deviceGroup="";
+    String iBeaconUuid = "";
     long beaconUID=0;
     int deriveType=0;
     int masterStatus=0;
@@ -16,6 +17,16 @@ public class BeconDeviceClass {
 
     String details_uid = "";
     String details_groupId = "";
+
+
+    public String getiBeaconUuid() {
+        return iBeaconUuid;
+    }
+
+    public void setiBeaconUuid(String iBeaconUuid) {
+        this.iBeaconUuid = iBeaconUuid;
+    }
+
 
 
     public String getDetails_groupId() {

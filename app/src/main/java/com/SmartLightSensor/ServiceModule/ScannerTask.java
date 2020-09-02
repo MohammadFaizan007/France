@@ -15,6 +15,7 @@ import com.SmartLightSensor.activity.AppHelper;
 import org.altbeacon.beacon.Beacon;
 import org.altbeacon.beacon.BeaconManager;
 import org.altbeacon.beacon.BeaconParser;
+import org.altbeacon.beacon.Identifier;
 import org.altbeacon.beacon.RangeNotifier;
 import org.altbeacon.beacon.Region;
 
@@ -57,12 +58,15 @@ boolean mAllowRebind;
         this.receiverResultInterface=receiverResultInterface;
         animatedProgress=new AnimatedProgress(activity);
         mBeaconManager.getBeaconParsers().add(new BeaconParser().
+                setBeaconLayout("x,m:0-1=da03,i:0-1,d:2-3,d:4-5,d:6-7,d:8-9,d:9-10"));
+        mBeaconManager.getBeaconParsers().add(new BeaconParser().
                 setBeaconLayout(EDDYSTONE_URL_LAYOUT));
-        mBeaconManager.getBeaconParsers().add(new BeaconParser().
-                setBeaconLayout(BeaconParser.EDDYSTONE_UID_LAYOUT));
-// Detect the telemetry (TLM) frame:
-        mBeaconManager.getBeaconParsers().add(new BeaconParser().
-                setBeaconLayout(BeaconParser.EDDYSTONE_TLM_LAYOUT));
+        this.mBeaconManager.getBeaconParsers().add(new BeaconParser(). setBeaconLayout("m:2-3=0215,i:4-19,i:20-21,i:22-23,p:24-24"));
+//        mBeaconManager.getBeaconParsers().add(new BeaconParser().
+//                setBeaconLayout(BeaconParser.EDDYSTONE_UID_LAYOUT));
+//// Detect the telemetry (TLM) frame:
+//        mBeaconManager.getBeaconParsers().add(new BeaconParser().
+//                setBeaconLayout(BeaconParser.EDDYSTONE_TLM_LAYOUT));
         // set the duration of the scan to be 1.1 seconds
 //        mBeaconManager.setBackgroundScanPeriod(1100l);
 // set the time between each scan to be 1 hour (3600 seconds)
@@ -151,22 +155,14 @@ boolean mAllowRebind;
     @Override
     public void didRangeBeaconsInRegion(Collection<Beacon> beacons, Region region) {
         Log.w(TAG, "didRangeBeaconsInRegion" + beacons.size());
-        for (Beacon beacon : beacons)
-        {
-            Log.w(TAG, beacon.getId1() + "" + beacon.toString() + beacon.getDataFields().toString());
-            Log.i(TAG, "didRangeBeaconsInRegion12" + beacon.getServiceUuid());
-
+        for (Beacon beacon : beacons) {
 
 //            Log.w("nbytes",(byteQueue.pop())+","+(byteQueue.pop4B())+","+byteQueue.pop());
-            if (beacon.getServiceUuid() == 0xfeaa && beacon.getBeaconTypeCode() == 0x10)
-            {
+            if (beacon.getServiceUuid() == 0xfeaa && beacon.getBeaconTypeCode() == 0x10) {
                 byte[] bytes = beacon.getId1().toByteArray();
                 String receivedString = null;
                 receivedString = new String(bytes, 0, bytes.length, StandardCharsets.US_ASCII);
-
                 Log.w(TAG, "I just received: " + receivedString);
-
-
                 if (receivedString.toLowerCase().contains("tx"))
                 {
                     String[] splitUrl = receivedString.split("tx");

@@ -44,15 +44,19 @@ public class ScannerService extends Service implements BeaconConsumer, RangeNoti
     @Override
     public void onCreate() {
         mBeaconManager = BeaconManager.getInstanceForApplication(this.getApplicationContext());
+        mBeaconManager.getBeaconParsers().add(new BeaconParser().
+                setBeaconLayout("x,m:0-1=da03,i:0-1,d:2-3,d:4-5,d:6-7,d:8-9,d:9-10"));
       // Detect the main identifier (UID) frame:
-        mBeaconManager.getBeaconParsers().add(new BeaconParser().
-                setBeaconLayout(BeaconParser.EDDYSTONE_UID_LAYOUT));
-// Detect the telemetry (TLM) frame:
-        mBeaconManager.getBeaconParsers().add(new BeaconParser().
-                setBeaconLayout(BeaconParser.EDDYSTONE_TLM_LAYOUT));
-      // Detect the URL frame:
+//        mBeaconManager.getBeaconParsers().add(new BeaconParser().
+//                setBeaconLayout(BeaconParser.EDDYSTONE_UID_LAYOUT));
+//// Detect the telemetry (TLM) frame:
+//        mBeaconManager.getBeaconParsers().add(new BeaconParser().
+//                setBeaconLayout(BeaconParser.EDDYSTONE_TLM_LAYOUT));
+//      // Detect the URL frame:
         mBeaconManager.getBeaconParsers().add(new BeaconParser().
                 setBeaconLayout(BeaconParser.EDDYSTONE_URL_LAYOUT));
+        mBeaconManager.getBeaconParsers().add(new BeaconParser().
+                setBeaconLayout("m:2-3=beac,i:4-19,i:20-21,i:22-23,p:24-24,d:25-25"));
 //        mBeaconManager.setForegroundScanPeriod(200);
 //        mBeaconManager.startRangingBeaconsInRegion(region);
         mBeaconManager.setBackgroundBetweenScanPeriod(scanPeriod);

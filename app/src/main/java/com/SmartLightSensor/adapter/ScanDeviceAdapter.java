@@ -164,15 +164,24 @@ public class ScanDeviceAdapter extends BaseAdapter implements AdvertiseResultInt
         ViewHolder viewHolder=new ViewHolder(convertView);
         String uid = beconDeviceClass.getDeviceUid();
         viewHolder.addDevice.setText(beconDeviceClass.isAdded()?"Added":"Add");
-        Integer uid_int_dialog = Integer.parseInt(uid, 16);
+//        Integer uid_int_dialog = Integer.parseInt(uid, 16);
+
+//        viewHolder.addDeviceUid.setText(beconDeviceClass.getDeviceUid());
+
         if (beconDeviceClass.isAdded()) {
             viewHolder.addDevice.setVisibility(View.GONE);
-            viewHolder.addDeviceUid.setText("UID-"+uid_int_dialog.toString()+"\n"+"Name-"+beconDeviceClass.getDeviceName());
+            viewHolder.addDeviceUid.setText(beconDeviceClass.getDeviceName());
             viewHolder.statusSwitch.setVisibility(View.VISIBLE);
         } else {
             viewHolder.addDevice.setVisibility(View.VISIBLE);
-            viewHolder.addDeviceUid.setText(uid_int_dialog.toString());
+            viewHolder.addDeviceUid.setText(beconDeviceClass.getDeviceUid());
             viewHolder.statusSwitch.setVisibility(View.GONE);
+        }
+        if (beconDeviceClass.getiBeaconUuid().equalsIgnoreCase("e5d4c3b2")){
+            viewHolder.review1.setImageResource(R.drawable.mokoband);
+            viewHolder.statusSwitch.setVisibility(View.GONE);
+        }else {
+            viewHolder.review1.setImageResource(R.drawable.ic_lightbulb_outline_black_24dp);
         }
 
         viewHolder.statusSwitch.setOnStateChangeListener(new JellyToggleButton.OnStateChangeListener() {

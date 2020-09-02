@@ -224,7 +224,7 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/add_device_group_list"
+                app:layout_constraintEnd_toStartOf="@+id/spiinner_layout"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/damper" />
 
@@ -241,16 +241,37 @@
 <!--                android:singleLine="true"-->
 <!--                android:textColor="@color/black"-->
 <!--                android:textSize="16sp"-->
-            <Spinner
-                android:id="@+id/add_device_group_list"
+
+            <RelativeLayout
+                android:id="@+id/spiinner_layout"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="5dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/rounded_gray_border"
+                android:paddingStart="20dp"
+                android:paddingEnd="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/group"
-                app:layout_constraintTop_toBottomOf="@+id/damper" />
+                app:layout_constraintTop_toBottomOf="@+id/damper" >
+
+                <Spinner
+                    android:id="@+id/add_device_group_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>
+
+<!--    <Spinner-->
+<!--                android:id="@+id/add_device_group_list"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:layout_marginStart="8dp"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:layout_marginEnd="5dp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toEndOf="@+id/group"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/damper" />-->
 
 
 <!--            <View-->
