@@ -177,8 +177,11 @@ public class ScanDeviceAdapter extends BaseAdapter implements AdvertiseResultInt
             viewHolder.addDeviceUid.setText(beconDeviceClass.getDeviceUid());
             viewHolder.statusSwitch.setVisibility(View.GONE);
         }
-        if (beconDeviceClass.getiBeaconUuid().equalsIgnoreCase("e5d4c3b2")){
+        if (beconDeviceClass.getiBeaconUuid().equalsIgnoreCase("533")) {
             viewHolder.review1.setImageResource(R.drawable.mokoband);
+            viewHolder.statusSwitch.setVisibility(View.GONE);
+        }else if (beconDeviceClass.getiBeaconUuid().equalsIgnoreCase("55811")) {
+            viewHolder.review1.setImageResource(R.mipmap.push_button);
             viewHolder.statusSwitch.setVisibility(View.GONE);
         }else {
             viewHolder.review1.setImageResource(R.drawable.ic_lightbulb_outline_black_24dp);

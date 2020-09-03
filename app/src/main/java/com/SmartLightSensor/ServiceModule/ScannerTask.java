@@ -62,16 +62,6 @@ boolean mAllowRebind;
         mBeaconManager.getBeaconParsers().add(new BeaconParser().
                 setBeaconLayout(EDDYSTONE_URL_LAYOUT));
         this.mBeaconManager.getBeaconParsers().add(new BeaconParser(). setBeaconLayout("m:2-3=0215,i:4-19,i:20-21,i:22-23,p:24-24"));
-//        mBeaconManager.getBeaconParsers().add(new BeaconParser().
-//                setBeaconLayout(BeaconParser.EDDYSTONE_UID_LAYOUT));
-//// Detect the telemetry (TLM) frame:
-//        mBeaconManager.getBeaconParsers().add(new BeaconParser().
-//                setBeaconLayout(BeaconParser.EDDYSTONE_TLM_LAYOUT));
-        // set the duration of the scan to be 1.1 seconds
-//        mBeaconManager.setBackgroundScanPeriod(1100l);
-// set the time between each scan to be 1 hour (3600 seconds)
-//        mBeaconManager.setBackgroundBetweenScanPeriod(3600000l);
-//
         mBeaconManager.setBackgroundBetweenScanPeriod(scanPeriod);
         mBeaconManager.setForegroundBetweenScanPeriod(scanPeriod);
         mBeaconManager.setBackgroundScanPeriod(scanPeriod);
@@ -90,8 +80,7 @@ boolean mAllowRebind;
 //        mBeaconManager.bind(this);
 
     }
-    public void start()
-    {
+    public void start() {
 //    animatedProgress.showProgress();
         region = new Region("all-beacons-region", null, null, null);
         try {
@@ -193,7 +182,10 @@ boolean mAllowRebind;
 
                     }
 
-                }}}}
+                }}
+
+
+        }}
 
     private void handler()
     {

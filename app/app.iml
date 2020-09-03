@@ -169,5 +169,8 @@
     <orderEntry type="module" module-name="progress-library" />
     <orderEntry type="module" module-name="niftyDialog" />
     <orderEntry type="module" module-name="jellytogglebutton" />
+    <orderEntry type="module" module-name="progress-library" />
+    <orderEntry type="module" module-name="niftyDialog" />
+    <orderEntry type="module" module-name="jellytogglebutton" />
   </component>
 </module>

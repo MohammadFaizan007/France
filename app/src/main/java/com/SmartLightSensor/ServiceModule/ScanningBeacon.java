@@ -82,6 +82,7 @@ public class ScanningBeacon implements BeaconConsumer {
             e.printStackTrace();
         }
         arrayList = new ArrayList<>();
+//        ArrayList<BeconDeviceClass> arrayList= new ArrayList<BeconDeviceClass>();
 
     }
 
@@ -107,9 +108,7 @@ public class ScanningBeacon implements BeaconConsumer {
             @Override
             public void didRangeBeaconsInRegion(Collection<Beacon> beacons, Region region) {
                 Log.e(TAG, "BeaconsReceive" + beacons.size());
-                final ArrayList<BeconDeviceClass> arrayList = new ArrayList<BeconDeviceClass>();
                 for (Beacon beacon : beacons) {
-                    String typecode = String.valueOf(beacon.getBeaconTypeCode());
                     if (beacon.getServiceUuid() == 0xfeaa && beacon.getBeaconTypeCode() == 0x10) {
                         byte[] bytes = beacon.getId1().toByteArray();
                         byte ONE = bytes[0];
@@ -121,93 +120,95 @@ public class ScanningBeacon implements BeaconConsumer {
 
                         if (receivedString.toLowerCase().contains("tx")) {
                             String[] splitUrl = receivedString.split("tx");
+
+
                             if (splitUrl.length > 1) {
                                 byte[] encodeId1 = MyBase64.decode(splitUrl[1]);
                                 ByteQueue byteQueue1 = new ByteQueue(encodeId1);
                                 byteQueue1.push(encodeId1);
                                 ByteQueue byteQueue2 = new ByteQueue(encodeId1);
                                 byteQueue2.push(encodeId1);
-                                int methodType = byteQueue1.pop();
-                                Log.w("MethodType", methodType + "");
-                                if (methodType == 0x4d) {
-                                    byte[] bytes1 = byteQueue1.pop4B();
+                                int methodType=byteQueue1.pop();
+                                Log.w("MethodType",methodType+"");
+                                if(methodType==0x4d){
+                                    byte[] bytes1=byteQueue1.pop4B();
                                     ArrayUtilities.reverse(bytes1);
-                                    String nodeUid = bytesToHex(bytes1);
+                                    String nodeUid=bytesToHex(bytes1);
                                     BigInteger bi = new BigInteger(nodeUid, 16);
-                                    Log.w("Scann", bi + "");
-                                    int deriveType = byteQueue1.pop();
-                                    Log.w("ScanningBeacon", nodeUid + "," + deriveType);
-                                    BeconDeviceClass beconDeviceClass = new BeconDeviceClass();
+                                    Log.w("Scann",bi+"");
+                                    int deriveType=byteQueue1.pop();
+                                    Log.w("ScanningBeacon",nodeUid+","+deriveType);
+                                    BeconDeviceClass beconDeviceClass=new BeconDeviceClass();
                                     beconDeviceClass.setBeaconUID(bi.longValue());
                                     beconDeviceClass.setDeviceUid(nodeUid);
                                     beconDeviceClass.setDeriveType(deriveType);
-                                    if (!hasBeacon(beconDeviceClass)) {
-                                        Cursor cursor = AppHelper.sqlHelper.getLightDetails(beconDeviceClass.getBeaconUID());
-                                        if (cursor != null && cursor.getCount() > 0) {
+                                    if(!hasBeacon(beconDeviceClass)) {
+                                        Cursor cursor= AppHelper.sqlHelper.getLightDetails(beconDeviceClass.getBeaconUID());
+                                        if(cursor!=null && cursor.getCount()>0)
+                                        {
                                             cursor.moveToFirst();
-                                            String beconName = cursor.getString(cursor.getColumnIndex(DatabaseConstant.COLUMN_DEVICE_NAME));
-                                            Log.w("BeaconName", beconName + ",");
+                                            String beconName=cursor.getString(cursor.getColumnIndex(DatabaseConstant.COLUMN_DEVICE_NAME));
+                                            Log.w("BeaconName",beconName+",");
                                             beconDeviceClass.setDeviceName(beconName);
                                             beconDeviceClass.setAdded(true);
 
                                         }
                                         arrayList.add(beconDeviceClass);
-                                    } else {
-                                        Log.w("Has", "Not add");
+                                    }
+                                    else {
+                                        Log.w("Has","Not add");
                                     }
                                 }
+
+                            else
+                            {
+                                Log.e("ScanningBEacon","OtherType");
+                            }
+
 
                             }
 
 
                         }
-
                     }
-                    if (beacon.getBeaconTypeCode() == 533) {
-                        String name = String.valueOf(beacon.getBluetoothName());
-                        String major = String.valueOf(beacon.getId2());
+
+                    if (beacon.getBeaconTypeCode()==533||beacon.getBeaconTypeCode()==55811) {
                         String mac_address = String.valueOf(beacon.getBluetoothAddress());
-                        String iUid;
-                        String fullAddress = String.valueOf(beacon.getId1());
-                        iUid = fullAddress.substring(0, 8);
-                        Log.e("CHECK=======>", iUid);
+                        String Type_Code = String.valueOf(beacon.getBeaconTypeCode());
+                        String packet = String.valueOf(beacon.getBluetoothAddress());
+                        String first = "", second = "", third = "", four = "", total;
+                        first = packet.substring(6, 8);
+                        Log.e("First", first + "");
+                        second = packet.substring(9, 11);
+                        Log.e("Second", second);
+                        third = packet.substring(12, 14);
+                        Log.e("Third", third);
+                        four = packet.substring(15, 17);
+                        Log.e("Four", four);
+                        total = first + second + third + four;
+                        Log.e("total", total);
+                        BigInteger bi = new BigInteger(total, 16);
+                        Log.e("Scann", bi + "");
+
                         BeconDeviceClass beconDeviceClass = new BeconDeviceClass();
-                        beconDeviceClass.setiBeaconUuid(iUid);
                         beconDeviceClass.setDeviceUid(mac_address);
+                        beconDeviceClass.setBeaconUID(bi.longValue());
+                        beconDeviceClass.setiBeaconUuid(Type_Code);
                         if (!hasBeacon(beconDeviceClass)) {
                             Cursor cursor = AppHelper.sqlHelper.getLightDetails(beconDeviceClass.getBeaconUID());
                             if (cursor != null && cursor.getCount() > 0) {
-                                cursor.moveToFirst();
-                                String beconName = cursor.getString(cursor.getColumnIndex(DatabaseConstant.COLUMN_DEVICE_NAME));
-                                Log.w("BeaconName", beconName + ",");
-                                beconDeviceClass.setDeviceName(beconName);
-                                beconDeviceClass.setAdded(true);
-                                }
-                                arrayList.add(beconDeviceClass);
-                        } else {
-                            Log.w("Has", "Not add");
-                        }
-
-                    }
-                    if (beacon.getBeaconTypeCode() == 55811){
-                        String mac_address = String.valueOf(beacon.getBluetoothAddress());
-                        BeconDeviceClass beconDeviceClass = new BeconDeviceClass();
-                        beconDeviceClass.setDeviceUid(mac_address);
-                        if (!hasBeacon(beconDeviceClass)) {
-                            Cursor cursor = AppHelper.sqlHelper.getLightDetails(beconDeviceClass.getBeaconUID());
-                            if (cursor != null && cursor.getCount() > 0) {
-                                cursor.moveToFirst();
                                 String beconName = cursor.getString(cursor.getColumnIndex(DatabaseConstant.COLUMN_DEVICE_NAME));
                                 Log.w("BeaconName", beconName + ",");
                                 beconDeviceClass.setDeviceName(beconName);
                                 beconDeviceClass.setAdded(true);
                             }
                             arrayList.add(beconDeviceClass);
+//
                         } else {
-                            Log.w("Has", "Not add");
+                            Log.e("Has2", "Not add");
                         }
-
                     }
+
                 }
 
 
@@ -289,10 +290,26 @@ public class ScanningBeacon implements BeaconConsumer {
 
     }
 
+
     @Override
     public void onBeaconServiceConnect() {
-
+//        // Encapsulates a beacon identifier of arbitrary byte length
+//        ArrayList<Identifier> identifiers = new ArrayList<>();
+//
+//        // Set null to indicate that we want to match beacons with any value
+//        identifiers.add(null);
+//        // Represents a criteria of fields used to match beacon
+//        Region region = new Region("AllBeaconsRegion"), identifiers);
+//        try {
+//            // Tells the BeaconService to start looking for beacons that match the passed Region object
+//            mBeaconManager.startRangingBeaconsInRegion(region);
+//        } catch (RemoteException e) {
+//            e.printStackTrace();
+//        }
+//        // Specifies a class that should be called each time the BeaconService gets ranging data, once per second by default
+//        mBeaconManager.addRangeNotifier(this);
     }
+
 
     @Override
     public Context getApplicationContext() {

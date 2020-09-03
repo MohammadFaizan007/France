@@ -44,21 +44,15 @@ public class ScannerService extends Service implements BeaconConsumer, RangeNoti
     @Override
     public void onCreate() {
         mBeaconManager = BeaconManager.getInstanceForApplication(this.getApplicationContext());
+        // Detect the SWITCHES frame:
         mBeaconManager.getBeaconParsers().add(new BeaconParser().
                 setBeaconLayout("x,m:0-1=da03,i:0-1,d:2-3,d:4-5,d:6-7,d:8-9,d:9-10"));
-      // Detect the main identifier (UID) frame:
-//        mBeaconManager.getBeaconParsers().add(new BeaconParser().
-//                setBeaconLayout(BeaconParser.EDDYSTONE_UID_LAYOUT));
-//// Detect the telemetry (TLM) frame:
-//        mBeaconManager.getBeaconParsers().add(new BeaconParser().
-//                setBeaconLayout(BeaconParser.EDDYSTONE_TLM_LAYOUT));
-//      // Detect the URL frame:
+      // Detect the URL frame:
         mBeaconManager.getBeaconParsers().add(new BeaconParser().
                 setBeaconLayout(BeaconParser.EDDYSTONE_URL_LAYOUT));
+        // Detect the IBEACON frame:
         mBeaconManager.getBeaconParsers().add(new BeaconParser().
                 setBeaconLayout("m:2-3=beac,i:4-19,i:20-21,i:22-23,p:24-24,d:25-25"));
-//        mBeaconManager.setForegroundScanPeriod(200);
-//        mBeaconManager.startRangingBeaconsInRegion(region);
         mBeaconManager.setBackgroundBetweenScanPeriod(scanPeriod);
         mBeaconManager.setForegroundBetweenScanPeriod(scanPeriod);
         mBeaconManager.setBackgroundScanPeriod(scanPeriod);
@@ -145,7 +139,7 @@ public void setReceiverResultInterface(ReceiverResultInterface receiverResultInt
 
     @Override
     public void didRangeBeaconsInRegion(Collection<Beacon> beacons, Region region) {
-        Log.e("All=====>", "didRangeBeaconsInRegion12asf" + beacons.size());
+        Log.e("All=====>", "didRangeBeaconsInRegion" + beacons.size());
         for (Beacon beacon : beacons)
         {
             Log.w(TAG, beacon.getId1() + "" + beacon.toString() + beacon.getDataFields().toString());
@@ -153,8 +147,7 @@ public void setReceiverResultInterface(ReceiverResultInterface receiverResultInt
 
 
 //            Log.w("nbytes",(byteQueue.pop())+","+(byteQueue.pop4B())+","+byteQueue.pop());
-            if (beacon.getServiceUuid() == 0xfeaa && beacon.getBeaconTypeCode() == 0x10)
-            {
+            if (beacon.getServiceUuid() == 0xfeaa && beacon.getBeaconTypeCode() == 0x10) {
                 // This is a Eddystone-URL frame
 //                String url = UrlBeaconUrlCompressor.uncompress(beacon.getId1().toByteArray());
 //                String[] splitUrl=url.split("#");
@@ -266,6 +259,9 @@ public void setReceiverResultInterface(ReceiverResultInterface receiverResultInt
 //                Log.w(TAG, "I see a beacon transmitting a url: " + url +
 //                        " approximately " + beacon.getDistance() + " meters away.");
             }
+
+
+
 
 
         }
