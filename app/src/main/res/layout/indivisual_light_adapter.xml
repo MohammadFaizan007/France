@@ -4,38 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_lo"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_5sdp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="@dimen/_5sdp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:cardCornerRadius="5dp"
         app:cardElevation="2dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-             <ImageView
-                 android:id="@+id/light_details"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_marginStart="8dp"
-                 android:layout_marginTop="8dp"
-                 android:layout_marginBottom="8dp"
-                 android:background="@drawable/white_circle_border"
-                 app:layout_constraintBottom_toBottomOf="parent"
-                 app:layout_constraintStart_toStartOf="parent"
-                 app:layout_constraintTop_toTopOf="parent"
-                  />
+            <ImageView
+                android:id="@+id/light_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/white_circle_border"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
             <View
@@ -51,18 +52,17 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
 
-
             <TextView
                 android:id="@+id/dashboard_deviceName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
                 android:ems="10"
                 android:maxLines="2"
-                android:text="Light 1"
                 android:padding="@dimen/_3sdp"
+                android:text="Light 1"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -72,15 +72,14 @@
                 app:layout_constraintVertical_bias="0.0" />
 
 
-
             <Button
                 android:id="@+id/individual_customize"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
-                android:layout_marginStart="8dp"
                 android:background="@drawable/rect_btn_bg_darkprimary"
                 android:gravity="center"
                 android:text="Customize"
@@ -89,32 +88,32 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/status_switch"
-                app:layout_constraintStart_toEndOf="@+id/view4"
                 app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/view4"
                 app:layout_constraintTop_toBottomOf="@+id/dashboard_deviceName" />
 
             <com.nightonke.jellytogglebutton.JellyToggleButton
                 android:id="@+id/status_switch"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:checked="true"
                 android:layout_marginStart="5dp"
-                android:layout_marginEnd="8dp"
                 android:layout_marginTop="8dp"
-                app:jtbLeftText="Off"
-                app:jtbLeftTextSize="@dimen/app_text_size"
-                app:jtbRightTextSize="@dimen/app_text_size"
-                app:jtbRightText="On"
-                app:jtbTextMarginLeft="10dp"
-                app:jtbTextMarginRight="10dp"
+                android:layout_marginEnd="8dp"
+                android:checked="true"
+                android:textSize="12sp"
                 app:jtbJelly="active_tremble_body_slim_jim"
                 app:jtbLeftBackgroundColor="@color/gray"
-                app:jtbRightBackgroundColor="@color/colorPrimary"
-                app:jtbLeftThumbColor="@color/colorPrimary"
-                app:jtbRightThumbColor="@android:color/white"
+                app:jtbLeftText="Off"
                 app:jtbLeftTextColor="@android:color/white"
+                app:jtbLeftTextSize="@dimen/app_text_size"
+                app:jtbLeftThumbColor="@color/colorPrimary"
+                app:jtbRightBackgroundColor="@color/colorPrimary"
+                app:jtbRightText="On"
                 app:jtbRightTextColor="@color/colorPrimary"
-                android:textSize="12sp"
+                app:jtbRightTextSize="@dimen/app_text_size"
+                app:jtbRightThumbColor="@android:color/white"
+                app:jtbTextMarginLeft="10dp"
+                app:jtbTextMarginRight="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/individual_customize"
                 app:layout_constraintTop_toBottomOf="@+id/dashboard_deviceName" />
@@ -123,10 +122,10 @@
                 android:id="@+id/details"
                 android:layout_width="120dp"
                 android:layout_height="40dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
-                android:layout_marginStart="8dp"
                 android:background="@drawable/rect_btn_bg_darkprimary"
                 android:gravity="center"
                 android:text="Details"
@@ -134,14 +133,28 @@
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:visibility="gone"
-                app:layout_constraintTop_toBottomOf="@+id/status_switch"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@+id/status_switch" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
+    <TextView
+        android:id="@+id/no_record"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No record available"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_16sdp"
+        android:textStyle="italic"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-<!--        <androidx.cardview.widget.CardView-->
+
+    <!--        <androidx.cardview.widget.CardView-->
 <!--            android:id="@+id/card_customerId"-->
 <!--            android:layout_width="match_parent"-->
 <!--            android:layout_height="match_parent"-->

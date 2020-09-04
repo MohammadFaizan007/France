@@ -177,8 +177,12 @@ public class ScanDeviceAdapter extends BaseAdapter implements AdvertiseResultInt
             viewHolder.addDeviceUid.setText(beconDeviceClass.getDeviceUid());
             viewHolder.statusSwitch.setVisibility(View.GONE);
         }
+
         if (beconDeviceClass.getiBeaconUuid().equalsIgnoreCase("533")) {
             viewHolder.review1.setImageResource(R.drawable.mokoband);
+            viewHolder.statusSwitch.setVisibility(View.GONE);
+        }else if (beconDeviceClass.getiBeaconUuid().equalsIgnoreCase("55811") && beconDeviceClass.getDeviceMacAddress().startsWith("E5:00")) {
+            viewHolder.review1.setImageResource(R.mipmap.pir_button);
             viewHolder.statusSwitch.setVisibility(View.GONE);
         }else if (beconDeviceClass.getiBeaconUuid().equalsIgnoreCase("55811")) {
             viewHolder.review1.setImageResource(R.mipmap.push_button);
@@ -282,6 +286,7 @@ public class ScanDeviceAdapter extends BaseAdapter implements AdvertiseResultInt
             contentValues.put(DatabaseConstant.COLUMN_DEVICE_BUILDING_NAME,et_building.getText().toString());
             contentValues.put(DatabaseConstant.COLUMN_DEVICE_LEVEL_NAME,et_level.getText().toString());
             contentValues.put(DatabaseConstant.COLUMN_DEVICE_ROOM_NAME,et_room.getText().toString());
+            contentValues.put(DatabaseConstant.COLUMN_DERIVE_TYPE,beconDeviceClass.getDeriveType());
             contentValues.put(DatabaseConstant.COLUMN_GROUP_ID,((GroupDetailsClass) spinner.getSelectedItem()).getGroupId());
 
 //            contentValues.put(DatabaseConstant.COLUMN_DEVICE_GROUP_NAME,et_group.getText().toString());

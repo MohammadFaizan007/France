@@ -87,19 +87,19 @@ public class EditDeviceFragment extends Fragment implements AdvertiseResultInter
     @BindView(R.id.edit_light_name)
     EditText editLightName;
 
-//    @BindView(R.id.group_list_spinner)
-//    Spinner groupListSpinner;
+    @BindView(R.id.group_list_spinner)
+    Spinner groupListSpinner;
 
-    @BindView(R.id.light_save)
-    ImageView lightSave;
-    @BindView(R.id.light_delete)
-    ImageView lightDelete;
+//    @BindView(R.id.light_save)
+//    ImageView lightSave;
+//    @BindView(R.id.light_delete)
+//    ImageView lightDelete;
 
     @BindView(R.id.status_switch)
     JellyToggleButton lightStatus;
 
-//    @BindView(R.id.group_save)
-//    Button lightSave;
+    @BindView(R.id.group_save)
+    Button lightSave;
 //    @BindView(R.id.details)
 //    Button details;
 //        @BindView(R.id.edit_light_save)
@@ -117,11 +117,11 @@ public class EditDeviceFragment extends Fragment implements AdvertiseResultInter
     int requestCode;
     @BindView(R.id.light_edit)
     ImageView lightEdit;
-//    @BindView(R.id.light_save)
-//    ImageView editLightSave;
+    @BindView(R.id.light_save)
+    ImageView editLightSave;
 
-//    @BindView(R.id.light_delete)
-//    ImageView editLightDelete;
+    @BindView(R.id.light_delete)
+    ImageView editLightDelete;
 String Type;
 
     public EditDeviceFragment() {
@@ -142,6 +142,8 @@ String Type;
         if (deviceClass == null) {
             deviceClass = new DeviceClass();
         }
+
+        Log.e("DeriverType====>",deviceClass.getDeriveType());
 
         if (Type.equalsIgnoreCase("light")){
             editLightName.setText(deviceClass.getDeviceName());
@@ -264,42 +266,42 @@ String Type;
                 return tv;
             }
         };
-//        groupListSpinner.setAdapter(adapter);
-//        getAllGroups();
+        groupListSpinner.setAdapter(adapter);
+        getAllGroups();
         return view;
     }
 
-//    public void getAllGroups() {
-//        list.clear();
-//        GroupDetailsClass noGroup = new GroupDetailsClass();
-//        noGroup.setGroupName("No Group");
-//        list.add(noGroup);
+    public void getAllGroups() {
+        list.clear();
+        GroupDetailsClass noGroup = new GroupDetailsClass();
+        noGroup.setGroupName("No Group");
+        list.add(noGroup);
+
+        Cursor cursor = sqlHelper.getAllGroup();
+        int i = 1;
+        if (cursor.moveToFirst()) {
+            do {
+                GroupDetailsClass groupData = new GroupDetailsClass();
+                groupData.setGroupId(cursor.getInt(cursor.getColumnIndex(DatabaseConstant.COLUMN_GROUP_ID)));
+                groupData.setGroupDimming(cursor.getInt(cursor.getColumnIndex(DatabaseConstant.COLUMN_GROUP_PROGRESS)));
+                groupData.setGroupName(cursor.getString(cursor.getColumnIndex(DatabaseConstant.COLUMN_GROUP_NAME)));
+                groupData.setGroupStatus(cursor.getInt(cursor.getColumnIndex(DatabaseConstant.COLUMN_GROUP_STATUS)) == 1);
+                list.add(groupData);
+                if (groupData.getGroupId() == deviceClass.getGroupId()) {
+                    spinnerSelectedPosition = i;
+//                    Toast.makeText(activity, "i=" + i, Toast.LENGTH_SHORT).show();
+                }
+                i++;
+                // do what ever you want here
+            }
+            while (cursor.moveToNext());
+        }
+
 //
-//        Cursor cursor = sqlHelper.getAllGroup();
-//        int i = 1;
-//        if (cursor.moveToFirst()) {
-//            do {
-//                GroupDetailsClass groupData = new GroupDetailsClass();
-//                groupData.setGroupId(cursor.getInt(cursor.getColumnIndex(DatabaseConstant.COLUMN_GROUP_ID)));
-//                groupData.setGroupDimming(cursor.getInt(cursor.getColumnIndex(DatabaseConstant.COLUMN_GROUP_PROGRESS)));
-//                groupData.setGroupName(cursor.getString(cursor.getColumnIndex(DatabaseConstant.COLUMN_GROUP_NAME)));
-//                groupData.setGroupStatus(cursor.getInt(cursor.getColumnIndex(DatabaseConstant.COLUMN_GROUP_STATUS)) == 1);
-//                list.add(groupData);
-//                if (groupData.getGroupId() == deviceClass.getGroupId()) {
-//                    spinnerSelectedPosition = i;
-////                    Toast.makeText(activity, "i=" + i, Toast.LENGTH_SHORT).show();
-//                }
-//                i++;
-//                // do what ever you want here
-//            }
-//            while (cursor.moveToNext());
-//        }
-//
-////
-//        cursor.close();
-//        adapter.notifyDataSetChanged();
-//        groupListSpinner.setSelection(spinnerSelectedPosition);
-//    }
+        cursor.close();
+        adapter.notifyDataSetChanged();
+        groupListSpinner.setSelection(spinnerSelectedPosition);
+    }
 
     public GroupDetailsClass getGroup(int id) {
 
@@ -470,7 +472,7 @@ String Type;
         }
     }
 
-    @OnClick({R.id.light_delete,R.id.light_save, R.id.light_edit,   /*R.id.light_check_group,*/ R.id.set_level/*, R.id.light_check_status, R.id.light_check_master*/})
+    @OnClick({R.id.light_delete,R.id.light_save, R.id.light_edit, R.id.light_set_master ,R.id.group_save,  /*R.id.light_check_group,*/ R.id.set_level/*, R.id.light_check_status, R.id.light_check_master*/})
     public void onViewClicked(View view) {
         final AdvertiseTask[] advertiseTask = new AdvertiseTask[1];
         final ByteQueue[] byteQueue = new ByteQueue[1];
@@ -488,15 +490,15 @@ String Type;
                 {
                     editLightName.setEnabled(false);
                     lightEdit.setVisibility(View.VISIBLE);
-                    lightSave.setVisibility(View.GONE);
-//                    editLightDelete.setVisibility(View.GONE);
+                    editLightSave.setVisibility(View.GONE);
+                    editLightDelete.setVisibility(View.GONE);
                 }
                 else
                 {
                     editLightName.setEnabled(true);
                     lightEdit.setVisibility(View.GONE);
-                    lightSave.setVisibility(View.VISIBLE);
-//                    editLightDelete.setVisibility(View.VISIBLE);
+                    editLightSave.setVisibility(View.VISIBLE);
+                    editLightDelete.setVisibility(View.VISIBLE);
                 }
                 break;
 //            case R.id.light_check_group:
@@ -511,30 +513,30 @@ String Type;
 //                advertiseTask[0].startAdvertising();
 //
 //                break;
-//            case R.id.light_set_master:
-//                NiftyDialogBuilder dialogBuilder = NiftyDialogBuilder.getInstance(activity);
-//                dialogBuilder
-//                        .withTitle("Master Light")
-//                        .withEffect(Effectstype.Shake)
-//                        .withMessage("Set light '" + deviceClass.getDeviceName() + "' as master light")
-//                        .withButton1Text("OK")
-//                        .setButton1Click(v -> {
-//                            byteQueue[0] = new ByteQueue();
-//                            byteQueue[0].push(RxMethodType.SELECT_MASTER);
-//                            byteQueue[0].pushU4B(deviceClass.getDeviceUID());
-//                            byteQueue[0].push(0x00);
-//                            advertiseTask[0] = new AdvertiseTask(EditDeviceFragment.this, activity);
-//                            advertiseTask[0].setByteQueue(byteQueue[0]);
-//                            advertiseTask[0].setSearchRequestCode(SELECT_MASTER_RESPONSE);
-//                            advertiseTask[0].startAdvertising();
-//                            dialogBuilder.dismiss();
-//                        }).withButton2Text("Cancel")
-//                        .setButton2Click(v -> {
-//                            dialogBuilder.dismiss();
-//                        })
-//                        .show();
-//
-//                break;
+            case R.id.light_set_master:
+                NiftyDialogBuilder dialogBuilder = NiftyDialogBuilder.getInstance(activity);
+                dialogBuilder
+                        .withTitle("Master Light")
+                        .withEffect(Effectstype.Shake)
+                        .withMessage("Set light '" + deviceClass.getDeviceName() + "' as master light")
+                        .withButton1Text("OK")
+                        .setButton1Click(v -> {
+                            byteQueue[0] = new ByteQueue();
+                            byteQueue[0].push(RxMethodType.SELECT_MASTER);
+                            byteQueue[0].pushU4B(deviceClass.getDeviceUID());
+                            byteQueue[0].push(0x00);
+                            advertiseTask[0] = new AdvertiseTask(EditDeviceFragment.this, activity);
+                            advertiseTask[0].setByteQueue(byteQueue[0]);
+                            advertiseTask[0].setSearchRequestCode(SELECT_MASTER_RESPONSE);
+                            advertiseTask[0].startAdvertising();
+                            dialogBuilder.dismiss();
+                        }).withButton2Text("Cancel")
+                        .setButton2Click(v -> {
+                            dialogBuilder.dismiss();
+                        })
+                        .show();
+
+                break;
 //            case R.id.light_check_status:
 //                byteQueue[0] = new ByteQueue();
 //                byteQueue[0].push(RxMethodType.LIGHT_STATE);
@@ -635,7 +637,7 @@ String Type;
                         editLightName.setEnabled(false);
                         lightEdit.setVisibility(View.VISIBLE);
 //                   groupDelete.setVisibility(View.GONE);
-                        lightSave.setVisibility(View.GONE);
+                        editLightSave.setVisibility(View.GONE);
                         activity.onBackPressed();
                     }else
                         Toast.makeText(activity, "Some error to edit Light", Toast.LENGTH_SHORT).show();
@@ -647,7 +649,7 @@ String Type;
                         editLightName.setEnabled(false);
                         lightEdit.setVisibility(View.VISIBLE);
 //                   groupDelete.setVisibility(View.GONE);
-                        lightSave.setVisibility(View.GONE);
+                        editLightSave.setVisibility(View.GONE);
                         activity.onBackPressed();
                     }else
                         Toast.makeText(activity, "Some error to edit Site", Toast.LENGTH_SHORT).show();
@@ -658,7 +660,7 @@ String Type;
                         editLightName.setEnabled(false);
                         lightEdit.setVisibility(View.VISIBLE);
 //                   groupDelete.setVisibility(View.GONE);
-                        lightSave.setVisibility(View.GONE);
+                        editLightSave.setVisibility(View.GONE);
                         activity.onBackPressed();
                     } else
                         Toast.makeText(activity, "Some error to edit Building", Toast.LENGTH_SHORT).show();
@@ -669,7 +671,7 @@ String Type;
                         editLightName.setEnabled(false);
                         lightEdit.setVisibility(View.VISIBLE);
 //                   groupDelete.setVisibility(View.GONE);
-                        lightSave.setVisibility(View.GONE);
+                        editLightSave.setVisibility(View.GONE);
                         activity.onBackPressed();
                     } else
                         Toast.makeText(activity, "Some error to edit Level", Toast.LENGTH_SHORT).show();
@@ -680,7 +682,7 @@ String Type;
                         editLightName.setEnabled(false);
                         lightEdit.setVisibility(View.VISIBLE);
 //                   groupDelete.setVisibility(View.GONE);
-                        lightSave.setVisibility(View.GONE);
+                        editLightSave.setVisibility(View.GONE);
                         activity.onBackPressed();
                     } else
                         Toast.makeText(activity, "Some error to edit Room", Toast.LENGTH_SHORT).show();
@@ -688,46 +690,46 @@ String Type;
 
 
                 break;
-//            case R.id.group_save:
-//                if (groupListSpinner.getSelectedItemPosition() != spinnerSelectedPosition) {
-////                    Toast.makeText(activity, "Selected Group " + list.get(groupListSpinner.getSelectedItemPosition()).getGroupName(), Toast.LENGTH_SHORT).show();
-//                    byteQueue[0] = new ByteQueue();
-//                    byteQueue[0].push(RxMethodType.UPDATE_GROUP);
-//                    byteQueue[0].pushU4B(deviceClass.getDeviceUID());
-//                    byteQueue[0].push(list.get(groupListSpinner.getSelectedItemPosition()).getGroupId());
-//
-//
-//                    advertiseTask[0] = new AdvertiseTask(this, activity,5*1000);
-//                    advertiseTask[0].setByteQueue(byteQueue[0]);
-//                    advertiseTask[0].setSearchRequestCode(UPDATE_GROUP_RESPONSE);
-//                    advertiseTask[0].startAdvertising();
-//
-//                } else
-////                    saveData();
-//                break;
+            case R.id.group_save:
+                if (groupListSpinner.getSelectedItemPosition() != spinnerSelectedPosition) {
+//                    Toast.makeText(activity, "Selected Group " + list.get(groupListSpinner.getSelectedItemPosition()).getGroupName(), Toast.LENGTH_SHORT).show();
+                    byteQueue[0] = new ByteQueue();
+                    byteQueue[0].push(RxMethodType.UPDATE_GROUP);
+                    byteQueue[0].pushU4B(deviceClass.getDeviceUID());
+                    byteQueue[0].push(list.get(groupListSpinner.getSelectedItemPosition()).getGroupId());
+
+
+                    advertiseTask[0] = new AdvertiseTask(this, activity,5*1000);
+                    advertiseTask[0].setByteQueue(byteQueue[0]);
+                    advertiseTask[0].setSearchRequestCode(UPDATE_GROUP_RESPONSE);
+                    advertiseTask[0].startAdvertising();
+
+                } else
+                    saveData();
+                break;
         }
     }
 
-//    public void saveData() {
-//        if (editLightName.getText().toString().trim().length() < 1) {
-//            editLightName.setError("Light name can't empty");
-//            return;
-//        }
-//        ContentValues contentValues = new ContentValues();
-//        contentValues.put(DatabaseConstant.COLUMN_DEVICE_NAME, editLightName.getText().toString());
-//        if (groupListSpinner.getSelectedItemPosition() != spinnerSelectedPosition)
-//            contentValues.put(DatabaseConstant.COLUMN_GROUP_ID, list.get(groupListSpinner.getSelectedItemPosition()).getGroupId());
-//        if (sqlHelper.updateDevice(deviceClass.getDeviceUID(), contentValues))
-//        {
-//            editLightName.setEnabled(false);
-//            lightEdit.setVisibility(View.VISIBLE);
-//            editLightSave.setVisibility(View.GONE);
-////            editLightDelete.setVisibility(View.GONE);
-//            activity.onBackPressed();
-//        }
-//        else
-//            Toast.makeText(activity, "Some error to edit group", Toast.LENGTH_SHORT).show();
-//    }
+    public void saveData() {
+        if (editLightName.getText().toString().trim().length() < 1) {
+            editLightName.setError("Light name can't empty");
+            return;
+        }
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(DatabaseConstant.COLUMN_DEVICE_NAME, editLightName.getText().toString());
+        if (groupListSpinner.getSelectedItemPosition() != spinnerSelectedPosition)
+            contentValues.put(DatabaseConstant.COLUMN_GROUP_ID, list.get(groupListSpinner.getSelectedItemPosition()).getGroupId());
+        if (sqlHelper.updateDevice(deviceClass.getDeviceUID(), contentValues))
+        {
+            editLightName.setEnabled(false);
+            lightEdit.setVisibility(View.VISIBLE);
+            editLightSave.setVisibility(View.GONE);
+//            editLightDelete.setVisibility(View.GONE);
+            activity.onBackPressed();
+        }
+        else
+            Toast.makeText(activity, "Some error to edit group", Toast.LENGTH_SHORT).show();
+    }
 
 //    void deleteDialog(){
 //        AlertDialog.Builder builder = new AlertDialog.Builder(activity);

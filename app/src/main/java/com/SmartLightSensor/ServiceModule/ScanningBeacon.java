@@ -57,6 +57,7 @@ public class ScanningBeacon implements BeaconConsumer {
     AnimatedProgress animatedProgress;
     Region region;
     private Runnable runnable = this::stop;
+    int deriveType ;
 
     public ScanningBeacon(Activity activity) {
         BeaconManager.setDebug(true);
@@ -160,10 +161,6 @@ public class ScanningBeacon implements BeaconConsumer {
                                     }
                                 }
 
-                            else
-                            {
-                                Log.e("ScanningBEacon","OtherType");
-                            }
 
 
                             }
@@ -172,10 +169,13 @@ public class ScanningBeacon implements BeaconConsumer {
                         }
                     }
 
+
+//                    E5:00 Pir
                     if (beacon.getBeaconTypeCode()==533||beacon.getBeaconTypeCode()==55811) {
                         String mac_address = String.valueOf(beacon.getBluetoothAddress());
                         String Type_Code = String.valueOf(beacon.getBeaconTypeCode());
                         String packet = String.valueOf(beacon.getBluetoothAddress());
+                        Log.e("BluetoothAddress", mac_address + "");
                         String first = "", second = "", third = "", four = "", total;
                         first = packet.substring(6, 8);
                         Log.e("First", first + "");
@@ -189,20 +189,21 @@ public class ScanningBeacon implements BeaconConsumer {
                         Log.e("total", total);
                         BigInteger bi = new BigInteger(total, 16);
                         Log.e("Scann", bi + "");
-
-                        BeconDeviceClass beconDeviceClass = new BeconDeviceClass();
-                        beconDeviceClass.setDeviceUid(mac_address);
-                        beconDeviceClass.setBeaconUID(bi.longValue());
-                        beconDeviceClass.setiBeaconUuid(Type_Code);
-                        if (!hasBeacon(beconDeviceClass)) {
-                            Cursor cursor = AppHelper.sqlHelper.getLightDetails(beconDeviceClass.getBeaconUID());
-                            if (cursor != null && cursor.getCount() > 0) {
-                                String beconName = cursor.getString(cursor.getColumnIndex(DatabaseConstant.COLUMN_DEVICE_NAME));
-                                Log.w("BeaconName", beconName + ",");
-                                beconDeviceClass.setDeviceName(beconName);
-                                beconDeviceClass.setAdded(true);
+                        BeconDeviceClass beconDeviceClass2 = new BeconDeviceClass();
+                        beconDeviceClass2.setDeviceMacAddress(mac_address);
+                        beconDeviceClass2.setDeviceUid(total);
+                        beconDeviceClass2.setBeaconUID(bi.longValue());
+                        beconDeviceClass2.setiBeaconUuid(Type_Code);
+                        if (!hasBeacon(beconDeviceClass2)) {
+                            Cursor cursor = AppHelper.sqlHelper.getLightDetails(beconDeviceClass2.getBeaconUID());
+//                            if (cursor != null && cursor.getCount() > 0) {
+                                if (cursor.moveToFirst()) {
+                                String Name = cursor.getString(cursor.getColumnIndex(DatabaseConstant.COLUMN_DEVICE_NAME));
+                                Log.w("BeaconName", Name + ",");
+                                beconDeviceClass2.setDeviceName(Name);
+                                beconDeviceClass2.setAdded(true);
                             }
-                            arrayList.add(beconDeviceClass);
+                            arrayList.add(beconDeviceClass2);
 //
                         } else {
                             Log.e("Has2", "Not add");

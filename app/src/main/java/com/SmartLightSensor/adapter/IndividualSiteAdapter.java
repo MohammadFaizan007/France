@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 
 import com.CustomProgress.CustomDialog.AnimatedProgress;
 import com.SmartLightSensor.EncodeDecodeModule.ArrayUtilities;
@@ -103,11 +104,20 @@ public class IndividualSiteAdapter extends BaseAdapter implements AdvertiseResul
         convertView = LayoutInflater.from(activity).
                 inflate(R.layout.indivisual_light_adapter, parent, false);
     }
+
+
         ViewHolder viewHolder = new ViewHolder(convertView);
         DeviceClass deviceClass=arrayList.get(position);
-        viewHolder.dashboardDeviceName.setText(deviceClass.getDeviceSite());
-        viewHolder.lightDetails.setBackground(activity.getResources().getDrawable(deviceClass.getMasterStatus()==0?R.drawable.white_circle_border:R.drawable.yellow_circle));
-        viewHolder.lightDetails.setOnClickListener(v -> {
+//        if (deviceClass.getDeviceSite().equalsIgnoreCase("")){
+//            viewHolder.no_record.setVisibility(View.VISIBLE);
+//            viewHolder.cardView2.setVisibility(View.GONE);
+//
+//        }else if (!deviceClass.getDeviceSite().equalsIgnoreCase("")){
+//            viewHolder.no_record.setVisibility(View.GONE);
+//            viewHolder.cardView2.setVisibility(View.VISIBLE);
+            viewHolder.dashboardDeviceName.setText(deviceClass.getDeviceSite());
+            viewHolder.lightDetails.setBackground(activity.getResources().getDrawable(deviceClass.getMasterStatus()==0?R.drawable.white_circle_border:R.drawable.yellow_circle));
+            viewHolder.lightDetails.setOnClickListener(v -> {
             Intent intent = new Intent(activity, HelperActivity.class);
             intent.putExtra(Constants.MAIN_KEY, Constants.EDIT_LIGHT);
             intent.putExtra(Constants.LIGHT_DETAIL_KEY,deviceClass);
@@ -175,6 +185,7 @@ public class IndividualSiteAdapter extends BaseAdapter implements AdvertiseResul
                 advertiseTask.startAdvertising();
             }
         });
+//        }
 //        Picasso.with(activity).load(IMAGE_URL + friendsDetails.getUserImage()).placeholder(R.drawable.ic_user_male_icon_2).error(R.drawable.ic_user_male_icon_2).into(viewHolder.friendsProfile);
 
 
@@ -407,11 +418,15 @@ public class IndividualSiteAdapter extends BaseAdapter implements AdvertiseResul
 
         @BindView(R.id.dashboard_deviceName)
         TextView dashboardDeviceName;
+        @BindView(R.id.no_record)
+        TextView no_record;
 
         @BindView(R.id.individual_customize)
         Button customise;
         @BindView(R.id.details)
         Button details;
+        @BindView(R.id.cardView2)
+        CardView cardView2;
 
         @BindView(R.id.status_switch)
         JellyToggleButton statusSwitch;

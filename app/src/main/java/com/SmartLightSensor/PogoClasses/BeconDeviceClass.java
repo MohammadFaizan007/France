@@ -2,6 +2,7 @@ package com.SmartLightSensor.PogoClasses;
 
 public class BeconDeviceClass {
     String deviceUid="";
+    String deviceMacAddress="";
     String deviceName="";
     String deviceSite="";
     String deviceBuilding="";
@@ -86,12 +87,21 @@ public class BeconDeviceClass {
         return beaconUID;
     }
 
+
     public String getDeviceUid() {
         return deviceUid;
     }
 
     public void setDeviceUid(String deviceUid) {
         this.deviceUid = deviceUid;
+    }
+
+    public String getDeviceMacAddress() {
+        return deviceMacAddress;
+    }
+
+    public void setDeviceMacAddress(String deviceMacAddress) {
+        this.deviceMacAddress = deviceMacAddress;
     }
 
     public void setDeviceName(String deviceName) {

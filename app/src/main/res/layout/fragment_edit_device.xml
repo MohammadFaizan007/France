@@ -79,7 +79,6 @@
                 android:layout_height="wrap_content"
                 android:paddingEnd="60dp"
                 android:enabled="false"
-                android:layout_toLeftOf="@+id/group_save"
                 android:text="Kitchen Group 1"
                 android:layout_centerVertical="true"
                 android:textSize="@dimen/app_text_size"
@@ -112,6 +111,129 @@
                 android:layout_alignParentEnd="true"
                 android:src="@drawable/ic_delete"/>
         </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/spinner_layout"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/rounded_gray_border"
+            >
+
+            <Spinner
+                android:id="@+id/group_list_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+        </RelativeLayout>
+<!--        <LinearLayout-->
+<!--            android:id="@+id/master"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="8dp"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:layout_marginEnd="8dp"-->
+<!--            android:gravity="center"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:weightSum="2"-->
+<!--            >-->
+
+<!--            <com.nightonke.jellytogglebutton.JellyToggleButton-->
+<!--                android:id="@+id/status_switch"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:layout_marginStart="@dimen/_10sdp"-->
+<!--                android:layout_marginEnd="@dimen/_10sdp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:checked="true"-->
+<!--                android:textAllCaps="false"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="18sp"-->
+<!--                app:jtbDuration="1000"-->
+<!--                app:jtbJelly="active_tremble_body_slim_jim"-->
+<!--                app:jtbLeftBackgroundColor="@color/gray"-->
+<!--                app:jtbLeftText="Off"-->
+<!--                app:jtbLeftTextColor="@android:color/white"-->
+<!--                app:jtbLeftTextSize="@dimen/app_text_size"-->
+<!--                app:jtbLeftThumbColor="@color/colorPrimary"-->
+<!--                app:jtbRightBackgroundColor="@color/colorPrimary"-->
+<!--                app:jtbRightText="On"-->
+<!--                app:jtbRightTextColor="@color/colorPrimary"-->
+<!--                app:jtbRightTextSize="@dimen/app_text_size"-->
+<!--                app:jtbRightThumbColor="@android:color/white"-->
+<!--                app:jtbTextMarginLeft="10dp"-->
+<!--                app:jtbTextMarginRight="10dp" />-->
+
+
+<!--            <Button-->
+<!--                android:id="@+id/set_level"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:layout_marginStart="@dimen/_10sdp"-->
+<!--                android:layout_marginEnd="@dimen/_10sdp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:background="@drawable/rect_btn_bg_darkprimary"-->
+<!--                android:text="Set Level"-->
+<!--                android:textAllCaps="false"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="18sp" />-->
+<!--        </LinearLayout>-->
+
+        <LinearLayout
+            android:id="@+id/save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="2"
+         >
+
+
+            <com.nightonke.jellytogglebutton.JellyToggleButton
+                android:id="@+id/status_switch"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_weight="1"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:checked="true"
+                app:jtbLeftText="Off"
+                app:jtbLeftTextSize="@dimen/app_text_size"
+                app:jtbRightTextSize="@dimen/app_text_size"
+                app:jtbRightText="On"
+                app:jtbTextMarginLeft="10dp"
+                app:jtbTextMarginRight="10dp"
+                app:jtbDuration="1000"
+                app:jtbJelly="active_tremble_body_slim_jim"
+                app:jtbLeftBackgroundColor="@color/gray"
+                app:jtbRightBackgroundColor="@color/colorPrimary"
+                app:jtbLeftThumbColor="@color/colorPrimary"
+                app:jtbRightThumbColor="@android:color/white"
+                app:jtbLeftTextColor="@android:color/white"
+                app:jtbRightTextColor="@color/colorPrimary" />
+            <Button
+                android:id="@+id/group_save"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_weight="1"
+                android:background="@drawable/rect_btn_bg_darkprimary"
+                android:text="Save"
+                android:visibility="invisible"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
+
         <LinearLayout
             android:id="@+id/master"
             android:layout_width="match_parent"
@@ -122,34 +244,21 @@
             android:gravity="center"
             android:orientation="horizontal"
             android:weightSum="2"
-            >
+          >
 
-            <com.nightonke.jellytogglebutton.JellyToggleButton
-                android:id="@+id/status_switch"
+
+            <Button
+                android:id="@+id/light_set_master"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_weight="1"
-                android:checked="true"
+                android:background="@drawable/rect_btn_bg_darkprimary"
+                android:text="Set As Master"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="18sp"
-                app:jtbDuration="1000"
-                app:jtbJelly="active_tremble_body_slim_jim"
-                app:jtbLeftBackgroundColor="@color/gray"
-                app:jtbLeftText="Off"
-                app:jtbLeftTextColor="@android:color/white"
-                app:jtbLeftTextSize="@dimen/app_text_size"
-                app:jtbLeftThumbColor="@color/colorPrimary"
-                app:jtbRightBackgroundColor="@color/colorPrimary"
-                app:jtbRightText="On"
-                app:jtbRightTextColor="@color/colorPrimary"
-                app:jtbRightTextSize="@dimen/app_text_size"
-                app:jtbRightThumbColor="@android:color/white"
-                app:jtbTextMarginLeft="10dp"
-                app:jtbTextMarginRight="10dp" />
-
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/set_level"
